@@ -1,7 +1,5 @@
 ﻿using Turbo.Plugins.Default;
 using System.Windows.Forms;
-using Turbo.Plugins.Jack;
-using Turbo.Plugins.Jack.DevTool.Logger;
 using System.Collections.Generic;
 using System;
 using System.Linq;
@@ -10,14 +8,14 @@ namespace Turbo.Plugins.Stone
 {
     public class MonsterSnoTest : BasePlugin, IInGameWorldPainter
     {
-//        public Keys HotKey { get; set; }
+        public Keys HotKey { get; set; }
         public IFont DefaultTextFont { get; set; }
         public List<uint> Dmonsters { get; set; }
 
         public MonsterSnoTest()
         {
             Enabled = true;
-//            HotKey = Keys.E;
+            HotKey = Keys.E;
 
         }
 
@@ -191,10 +189,123 @@ namespace Turbo.Plugins.Stone
             2224637,// 2224637	0.03	한 맺힌 몸덩이	Bile Crawler	    BileCrawler_A_Large_Aggro
             225258, // 225258	0.01	척추 휘갈이	    Spine Lasher	    BileCrawler_B_Large_Aggro
             2429785,// 2429785	1	    악랄한 고문관	Malevolent Tormentor	TreasureGoblin_H
-            26005,  // 26005	0.73	뿔 돌격수	    Horned Charger	    Beast_B
+            123161, // 123161	0.01	굶주린 몸뚱이	Hungry Torso	    ZombieCrawler_Custom_B
+            1531,   // 1531	    0.12	파고드는 껑충이	Burrowing Leaper	Scavenger_B
             26283,  // 26283	0.15	무덤 수호자	    Tomb Guardian	    SkeletonSummoner_A
-            26299,  // 26299	0.23	피바람 거미	    Arachnid Horror	    Spider_A
+            26311,  // 26311	0.54	거대 골고르	    Colossal Golgor	    ThousandPounder
+            26356,  // 26356    0.12	어둠의 소환사	Dark Summoner	    TriuneSummoner_A
             26419,  // 26419	0.01	기어다니는 몸뚱이	Crawling Torso	ZombieCrawler_A
+            26421,  // 26421	0.12	피를 뱉는 좀비	Deathspitter	    ZombieFemale_A
+            73820,  // 73820	0.02	새끼거미	    Spiderling	        Spiderling_A
+            202190, // 202190	0.08	부패한 좀비	    Decayer 	        ZombieSkinny_D
+            217676, // 217676	0.54	광기 어린 골고르	Maniacal Golgor	ThousandPounder_C
+            218794, // 218794	0.23	모래먼지 먹보	Dust Eater	        Zombie_D
+            218814, // 218814	0.01	모래먼지 얼얼이	Dust Biter	        ZombieCrawler_E
+            26005,  // 26005	0.73	뿔 돌격수	    Horned Charger	    Beast_B
+            26112,  // 26112	0.09	어둠달혈족 투창병	Dark Moon Clan Impaler	Goatman_Moonclan_Ranged_B
+            26136,  // 26136	0.09	창백한 무덤 일꾼	Ghastly Gravedigger	graveDigger_B
+            26349,  // 26349	0.06	어둠의 광신도	Dark Zealot	        TriuneCultist_B
+            26364,  // 26364	0.06	어둠의 육신	    Dark Vessel	        TriuneVessel_A
+            71338,  // 71338	0.01	그림자 망령	    Shadow Vermin	    shadowVermin_A
+            77794,  // 77794	0.16	영혼 갈취자	    Soul Ripper	        SoulRipper_A
+            107983, // 107983	0.06	서리 칼날	    Frost Razor	        QuillDemon_D
+            116427, // 116427	0.18	모래먼지 어미	Dust Retcher	    ZombieFemale_D
+            130868, // 130868	0.31	몰락자 지옥사냥개	Fallen Hellhound	FallenHound_D
+            165474, // 165474	0.46	몰락자 노예감독관	Fallen Slavelord	FallenChampion_D
+            230013, // 230013	0.19	달혈족 유령	    Moon Clan Ghost	    Goatman_Moonclan_Melee_A_Ghost
+            230836, // 230836	0.06	수감된 밀렵꾼	Jailed Poacher	    SkeletonArcher_Jail
+            284714, // 284714	0.01	역병 쥐	        Plagued Vermin	    x1_westmarch_rat_A
+            364501, // 364501	0.15	피를 뱉는 좀비	Deathspitter	    ZombieFemale_Spitter_A
+            26360,  // 26360	0.12	광분한 소환사	Crazed Summoner	    TriuneSummoner_D
+            51459,  // 51459	0.15	그물거미	    Webspitter Spider	Spider_B
+            112238, // 112238	0.05	사악한 구울	    Vicious Ghoul	    Ghoul_D
+            175834, // 175834	0.15	제압자	        Subjugator	        MastaBlasta_Rider_A_noride
+            216300, // 216300	0.17	몰락자 불마술사	Fallen Firemage	    FallenShaman_D
+            26362,  // 26362	0.38	부정한 노예	    Unholy Thrall	    TriuneVesselActivated_A
+            100209, // 100209	0.05	사나운 마귀	    Savage Fiend	    Ghoul_C
+            138001, // 138001	0.58	불 품은 땅거미	Scorching Creeper	Spider_Elemental_Fire_A
+            217306, // 217306	0.04	동굴날개	    Cave Wing	        FleshPitFlyer_F
+            26037,  // 26037	0.03	임프	        Imp	                CryptChild_A
+            26117,  // 26117	0.19	핏빛혈족 마술사	Blood Clan Sorcerer	GoatMutant_Shaman_A
+            168556, // 168556	0.31	지옥 후려갈기	Hell Basher	        Triune_Berserker_D
+            178215, // 178215	0.05	격분한 광신도	Enraged Zealot	    TriuneCultist_E
+            272331, // 272331	0.38	퇴마사	        Exorcist	        x1_FloaterAngel
+            284742, // 284742	0.19	원혼 깃든 방패병	Revenant Shield Guard	x1_Shield_Skeleton_Westmarch_A
+            309113, // 309113	0.12	죽음의 그림자	Shadow of Death	    x1_Ghost_Dark_A
+            26073,  // 26073	0.46	몰락자 감독관	Fallen Overseer	    FallenChampion_A
+            26081,  // 26081	0.02	몰락자 미치광이	Fallen Lunatic	    FallenLunatic_A
+            26089,  // 26089	0.05	역병박쥐	    Plague Carrier	    FleshPitFlyer_B
+            26114,  // 26114	0.23	어둠달혈족 영매	Dark Moon Clan Shaman	Goatman_Moonclan_Shaman_B
+            135613, // 135613	0.01	그늘 추적자	    Shade Stalker	    shadowVermin_C
+            342574, // 342574	0.02	뼈를 토하는 해골	Spitting Bones	x1_ZombieFemale_Skeleton_A
+            418908, // 418908	0.15	악마 지옥새	    Demonic Hellflyer	x1_LR_demonFlyer_A
+            26159,  // 26159	0.15	산적	        Brigand	            graveRobber_A
+            26299,  // 26299	0.23	피바람 거미     Arachnid Horror	    Spider_A
+            118154, // 118154	0.19	서큐버스	    Succubus	        Succubus_A
+            137547, // 137547	0.31	고통 전파자	    Pain Monger	        Triune_Berserker_B
+            179219, // 179219	0.15	유령 살인자	    Ghostly Murderer	graveRobber_ghost_A
+            271807, // 271807	0.05	수색귀 떠돌이	Scouring Lobber	    x1_PandExt_RockFodder_Ranged
+            332680, // 271811	0.04	수색귀 돌격꾼	Scouring Charger	x1_PandExt_RockFodder_Charger
+            77795,  // 77795	0.12	악마 돌격병	    Demon Trooper	    demonTrooper_A
+            170782, // 170782	0.06	어둠의 해골 활잡이	Dark Skeletal Bowman	SkeletonArcher_E
+            26083,  // 26083	0.09	배반당한 미라	Betrayed	        fastMummy_A
+            26305,  // 26305	0.09	독침벌레 떼	    Stinging Swarm	    Swarm_A
+            166920, // 166920	0.38	맹독 잠복꾼	    Toxic Lurker	    Spider_Poison_A
+            192968, // 192968	0.2	    분홍 무지개 유니콘	Pink Rainbow Unicorn	TentacleHorse_A
+            211532, // 211532	0.12	폭신곰	        Cuddle Bear	        TentacleBear_A
+            212019, // 212019	0.2	    보라 무지개 유니콘	Purple Rainbow Unicorn	TentacleHorse_B
+            212024, // 212024	0.31	통통한 보라 유니콘	Chubby Purple Unicorn	TentacleHorse_Fat_B
+            271616, // 271616	0.46	태고의 탐식자	Primordial Scavenger	X1_armorScavenger_A
+            271811, // 271811	0.04	수색귀 돌격꾼	Scouring Charger	x1_PandExt_RockFodder_Charger
+            326660, // 326660	0.27	전쟁상흔 유린자	Warscarred Ravager	X1_BigRed_Burned_A
+            327404, // 327404	0.15	전쟁상흔 보병	Warscarred Footsoldier	X1_demonTrooper_Burned_A
+            26288,  // 26288	0.06	해골 전사	    Skeletal Warrior	Skeleton_D
+            26363,  // 26363	0.38	간악한 노예	    Malignant Thrall	TriuneVesselActivated_B
+            204233, // 204233	0.19	날쌘 두개골 가름꾼	Swift Skull Cleaver	skeleton_twoHander_Keep_Swift_E
+            297707, // 297707	0.34	시체 사육자	    Corpse Raiser	    x1_Dark_Angel
+            334325, // 334325	0.12	타오르는 해골 전사	Blazing Bone Warrior	X1_Skeleton_Fire_A
+            346589, // 346589	0.23	살점 탐보	    Flesh Gorger	    x1_MoleMutant_Melee_A
+            26084,  // 26084	0.09	저주받은 미라	Accursed	        fastMummy_B
+            26186,  // 26186	0.31	라쿠니 전사	    Lacuni Warrior	    LacuniMale_A
+            164144, // 164144	0.31	사악한 망나니	Vicious Mangler	    Triune_Berserker_C
+            429787, // 429787	1	    핏빛 도둑	    Blood Thief	        TreasureGoblin_F
+            1533,   // 1533	    0.19	해골 집행자	    Skeletal Executioner	Skeleton_twohander_A
+            26084,  // 26084	0.09	저주받은 미라	Accursed	        fastMummy_B
+            26087,  // 26087	0.46	역병 둥지	    Plague Nest	        FleshPitFlyerSpawner_B
+            26106,  // 26106	0.05	잔인무도한 마귀	Murderous Fiend	    Ghoul_B
+            26275,  // 26275	0.05	서리 수호자	    Frost Guardian	    skeletonMage_Cold_A
+            26350,  // 26350	0.06	미쳐버린 이교도	Deranged Cultist	TriuneCultist_C
+            26351,  // 26351	0.06	광분한 이교도	Crazed Cultist	    TriuneCultist_D
+            174453, // 174453	0.04	충전된 쐐기새	Charged Stinger	    FleshPitFlyer_D
+            336557, // 336557	0.15	채찍쐐기 추적수	Lashing Creeper	    X1_CaveRipper_A
+            148830, // 148830	0.46	몰락자 감독	    Fallen Master	    FallenChampion_B
+            334799, // 334799	0.12	날쌘 살점갈퀴	Swift Fleshripper	X1_Fast_ZombieSkinny_A
+            26110,  // 26110	0.19	어둠달혈족 전사	Dark Moon Clan Warrior	Goatman_Moonclan_Melee_B
+            300104, // 300104	0.13	사악한 사냥개	Vicious Hound	    x1_WestmarchHound_A
+            334338, // 334338	0.06	타오르는 해골 궁수	Blazing Bone Archer	X1_SkeletonArcher_Fire_A
+            334436, // 334436	0.35	불타는 야수	    Fiery Beast	        X1_CoreEliteDemon_Fire_A
+            90454,  // 90454	0.1	    지옥불 좀비	    Inferno Zombie	    Zombie_Inferno_C
+            191611, // 191611	0.05	서리발톱 땅굴꾼	Frostclaw Burrower	Scavenger_D
+            338754, // 338754	0.04	구더기	        Maggot	            x1_bogBlight_Maggot_A
+            408486, // 408486 	0.23	공포의 악마	    Terror Demon	    TerrorDemon_A_LootRun
+            213846, // 213846 	0.06	사막 땅벌	    Desert Hornet	    Sandwasp_C
+            26067,  // 26067	0.31	사악한 마술사망령	Vicious Magewraith	DuneDervish_C
+            144988, // 144988	0.15	앙심에 찬 소환사	Vengeful Summoner	SkeletonSummoner_D
+            429789, // 429789	1.00	눈엣가시 악당	Insufferable Miscreant	TreasureGoblin_E
+            26357,  // 26357	0.12	어둠의 창조술사	Dark Conjurer	    TriuneSummoner_B
+            26369,  // 26369	0.15	사악한 지옥개	Vicious Hellion	    Triune_Summonable_B
+            116426, // 116426	0.14	구토하는 피바람 좀비	Spewing Horror	ZombieFemale_C
+            189850, // 189850	0.54	불어오른 말라코르	Bloated Malachor	ThousandPounder_B
+            349602, // 349602	0.31	역병쥐 지배자	Rat Caller	        X1_Plagued_LacuniMale_A
+            60833,  // 60833	0.54	악마 울림귀	    Demonic Tremor	    Brickhouse_A
+            26276,  // 26276	0.10	싸늘한 피조물	Chilling Construct	skeletonMage_Cold_B
+            26294,  // 26294 	0.15	구렁이 마술사	Serpent Magus	    SnakeMan_Caster_A
+            409591, // 409591 	0.01	쥐새끼	        Ratling	            p4_rat_A
+
+
+/*
+ */
+
 
             };
         }
@@ -209,21 +320,24 @@ namespace Turbo.Plugins.Stone
             foreach (var monster in monsters)
             {
 
-               if (Dmonsters.Contains(monster.SnoMonster.Sno)) return;
-                text1 = "MonstersData:\n";
-                text1 += monster.SnoMonster.Sno + "\t";
-                text1 += (monster.SnoMonster.RiftProgression * 100.0d / this.Hud.Game.MaxQuestProgress).ToString("N2") + "\t"; //650point == 100% //RiftProgression(point)
-                text1 += monster.SnoMonster.NameLocalized + "\t";
-                text1 += monster.SnoMonster.NameEnglish + "\t";
-                text1 += monster.SnoMonster.Code + "\n";
-                Hud.TextLog.Log("monsterdic", text1);
+                if (Dmonsters.Contains(monster.SnoMonster.Sno))
+                { text1 = ""; }
+               else
+               {
+                    text1 = "MonstersData:\n";
+                    text1 += monster.SnoMonster.Sno + "\t";
+                    text1 += (monster.SnoMonster.RiftProgression * 100.0d / this.Hud.Game.MaxQuestProgress).ToString("N2") + "\t"; //650point == 100% //RiftProgression(point)
+                    text1 += monster.SnoMonster.NameLocalized + "\t";
+                    text1 += monster.SnoMonster.NameEnglish + "\t";
+                    text1 += monster.SnoMonster.Code + "\n";
+                }
 
 
-            }
+          }
 //          var text1 = string.Format("{0}", );
             var layer1 = DefaultTextFont.GetTextLayout(text1);
             DefaultTextFont.DrawText(layer1, Hud.Window.Size.Width * 0.2f, Hud.Window.Size.Height * 0.05f);
-
+            Hud.TextLog.Log("monsterdic", text1);
 //          Says.Debug(text1);
             }
         }
